@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+message KeyValue {
+    map<string, Value> dataMap = 1;
+  }
+
+message Value {
+  oneof kind {
+    string stringValue = 1;
+    int32 int32Value = 2;
+    int64 int64Value = 3;
+    float floatValue = 4; 
+    double doubleValue = 5;
+    bool boolValue = 6;
+    bytes bytesValue = 7;
+    ListString listStringValue = 8;
+    ListInt32 listInt32Value = 9;
+    ListInt64 listInt64Value = 10;
+    ListFloat listFloatValue = 11; 
+    ListDouble listDoubleValue = 12;
+    ListBool listBoolValue = 13;
+    ListBytes listBytesValue =14;
+  }
+}
+  
+message ListString {
+    repeated string values = 1;
+  }
+  
+message ListInt32 {
+    repeated int32 values = 1;
+  }
+
+message ListInt64 {
+    repeated int64 values = 1;
+  }  
+  
+message ListFloat {
+    repeated float values = 1;
+  }  
+
+message ListDouble {
+    repeated double values = 1;
+  }
+  
+message ListBool {
+    repeated bool values = 1;
+  }
+  
+message ListBytes {
+    repeated bytes values = 1;
+  }
+  
+    
