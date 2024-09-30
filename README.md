@@ -1,6 +1,8 @@
-# Simple Secure Storage
+<img src="logo.jpeg" alt="Logo">
 
-`simple_secure_storage` is a Dart package designed for secure and efficient local storage using Protocol Buffers instead of JSON.
+# DBX
+
+`dbx` is a Dart package designed for secure and efficient local storage using Protocol Buffers instead of JSON.
 
 ## Features
 
@@ -32,11 +34,11 @@
 
 ## Installation
 
-Add `simple_secure_storage` to your `pubspec.yaml`:
+Add `dbx` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  simple_secure_storage: ^0.0.1
+  dbx: ^0.0.1
 ```
 you can install packages from the command line:
 
@@ -56,7 +58,7 @@ $  dart pub get
 with `Flutter`:
 
 ```dart
-import 'package:simple_secure_storage/simple_secure_DBX.dart';
+import 'package:dbx/dbx.dart';
 
 // Example usage
 void main() async {
@@ -69,7 +71,7 @@ void main() async {
 with `dart`:
 
 ```dart
-import 'package:simple_secure_storage/simple_secure_DBX.dart';
+import 'package:dbx/dbx.dart';
 
 // Example usage
 void main() async {
@@ -108,7 +110,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Simple Secure Storage Example'),
+          title: Text('DBX Example'),
           centerTitle: true,
         ),
         body: Center(
