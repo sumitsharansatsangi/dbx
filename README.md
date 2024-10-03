@@ -1,4 +1,4 @@
-<img src="logo.jpeg" alt="Logo">
+<img src="https://raw.githubusercontent.com/sumitsharansatsangi/dbx/main/logo.jpeg" alt="Logo">
 
 # DBX
 
