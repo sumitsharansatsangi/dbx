@@ -4,6 +4,8 @@
 
 `dbx` is a Dart package designed for secure and efficient local storage using Protocol Buffers instead of JSON.
 
+- A Key-Value Database with Easy API that supports wide range of Data Types.
+
 ## Features
 
 - **Protocol Buffers**: Utilizes Protocol Buffers (protobuf) for data serialization, offering significant performance improvements over JSON.

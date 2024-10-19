@@ -114,6 +114,27 @@ class DBX {
     _flush();
   }
 
+   static int? getPositiveInt(String key) {
+    return dataMap[key]?.uint32Value;
+  }
+
+  static Map<String, int?> getPositiveIntBulk(List<String> keys) {
+    return {for (var key in keys) key: dataMap[key]?.uint32Value};
+  }
+
+  static void setPositiveInt(String key, int value) {
+    dataMap[key] = Value()..uint32Value = value;
+    _flush();
+  }
+
+  static void setPositiveIntBulk(Map<String, int> map) {
+    for (var entry in map.entries) {
+      dataMap[entry.key] = Value()..uint32Value = entry.value;
+    }
+    _flush();
+  }
+
+
   static int? getLong(String key) {
     return dataMap[key]?.int64Value.toInt();
   }
@@ -133,6 +154,27 @@ class DBX {
     }
     _flush();
   }
+
+   static int? getPositiveLong(String key) {
+    return dataMap[key]?.uint64Value.toInt();
+  }
+
+  static Map<String, int?> getPositiveLongBulk(List<String> keys) {
+    return {for (var key in keys) key: dataMap[key]?.uint64Value.toInt()};
+  }
+
+  static void setPositiveLong(String key, int value) {
+    dataMap[key] = Value()..int64Value = Int64(value);
+    _flush();
+  }
+
+  static void setPositiveLongBulk(Map<String, int> map) {
+    for (var entry in map.entries) {
+      dataMap[entry.key] = Value()..int64Value = Int64(entry.value);
+    }
+    _flush();
+  }
+
 
   static double? getFloat(String key) {
     return dataMap[key]?.floatValue;
@@ -268,6 +310,31 @@ class DBX {
     }
     _flush();
   }
+
+  static List<int>? getPositiveIntList(String key) {
+    return dataMap[key]?.listuInt32Value.values;
+  }
+
+  static Map<String, List<int>> getPositiveIntListBulk(List<String> keys) {
+    return {
+      for (var key in keys)
+        if (dataMap[key] != null && dataMap[key]?.listuInt32Value.values != null)
+          key: dataMap[key]!.listuInt32Value.values
+    };
+  }
+
+  static void setPositiveIntList(String key, List<int> value) {
+    dataMap[key] = Value()..listuInt32Value = (ListuInt32()..values.addAll(value));
+    _flush();
+  }
+
+  static void setPositiveIntListBulk(Map<String, List<int>> map) {
+    for (var entry in map.entries) {
+      dataMap[entry.key] = Value()..listuInt32Value = (ListuInt32()..values.addAll(entry.value));
+    }
+    _flush();
+  }
+
   static List<int>? getLongList(String key) {
     final longList = dataMap[key]?.listInt64Value.values;
     if(longList == null)return null;
@@ -290,6 +357,32 @@ class DBX {
   static void setLongListBulk(Map<String, List<int>> map) {
     for (var entry in map.entries) {
       dataMap[entry.key] = Value()..listInt64Value = (ListInt64()..values.addAll([ for(var v in entry.value) Int64(v)]));
+    }
+    _flush();
+  }
+
+  static List<int>? getPositiveLongList(String key) {
+    final longList = dataMap[key]?.listuInt64Value.values;
+    if(longList == null)return null;
+    return [for(var long in longList) long.toInt() ];
+  }
+
+  static Map<String, List<int>> getPositiveLongListBulk(List<String> keys) {
+    return {
+      for (var key in keys)
+        if (dataMap[key] != null)
+          key: [for(var long in  dataMap[key]!.listuInt64Value.values) long.toInt() ]
+    };
+  }
+
+  static void setPositiveLongList(String key, List<int> value) {
+    dataMap[key] = Value()..listuInt64Value = (ListuInt64()..values.addAll([ for(var v in value) Int64(v)]));
+    _flush();
+  }
+
+  static void setPositiveLongListBulk(Map<String, List<int>> map) {
+    for (var entry in map.entries) {
+      dataMap[entry.key] = Value()..listuInt64Value = (ListuInt64()..values.addAll([ for(var v in entry.value) Int64(v)]));
     }
     _flush();
   }

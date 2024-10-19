@@ -43,19 +43,23 @@ const Value$json = {
   '1': 'Value',
   '2': [
     {'1': 'stringValue', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'stringValue'},
-    {'1': 'int32Value', '3': 2, '4': 1, '5': 5, '9': 0, '10': 'int32Value'},
-    {'1': 'int64Value', '3': 3, '4': 1, '5': 3, '9': 0, '10': 'int64Value'},
-    {'1': 'floatValue', '3': 4, '4': 1, '5': 2, '9': 0, '10': 'floatValue'},
-    {'1': 'doubleValue', '3': 5, '4': 1, '5': 1, '9': 0, '10': 'doubleValue'},
-    {'1': 'boolValue', '3': 6, '4': 1, '5': 8, '9': 0, '10': 'boolValue'},
-    {'1': 'bytesValue', '3': 7, '4': 1, '5': 12, '9': 0, '10': 'bytesValue'},
-    {'1': 'listStringValue', '3': 8, '4': 1, '5': 11, '6': '.ListString', '9': 0, '10': 'listStringValue'},
-    {'1': 'listInt32Value', '3': 9, '4': 1, '5': 11, '6': '.ListInt32', '9': 0, '10': 'listInt32Value'},
-    {'1': 'listInt64Value', '3': 10, '4': 1, '5': 11, '6': '.ListInt64', '9': 0, '10': 'listInt64Value'},
-    {'1': 'listFloatValue', '3': 11, '4': 1, '5': 11, '6': '.ListFloat', '9': 0, '10': 'listFloatValue'},
-    {'1': 'listDoubleValue', '3': 12, '4': 1, '5': 11, '6': '.ListDouble', '9': 0, '10': 'listDoubleValue'},
-    {'1': 'listBoolValue', '3': 13, '4': 1, '5': 11, '6': '.ListBool', '9': 0, '10': 'listBoolValue'},
-    {'1': 'listBytesValue', '3': 14, '4': 1, '5': 11, '6': '.ListBytes', '9': 0, '10': 'listBytesValue'},
+    {'1': 'uint32Value', '3': 2, '4': 1, '5': 13, '9': 0, '10': 'uint32Value'},
+    {'1': 'uint64Value', '3': 3, '4': 1, '5': 4, '9': 0, '10': 'uint64Value'},
+    {'1': 'int32Value', '3': 4, '4': 1, '5': 5, '9': 0, '10': 'int32Value'},
+    {'1': 'int64Value', '3': 5, '4': 1, '5': 3, '9': 0, '10': 'int64Value'},
+    {'1': 'floatValue', '3': 6, '4': 1, '5': 2, '9': 0, '10': 'floatValue'},
+    {'1': 'doubleValue', '3': 7, '4': 1, '5': 1, '9': 0, '10': 'doubleValue'},
+    {'1': 'boolValue', '3': 8, '4': 1, '5': 8, '9': 0, '10': 'boolValue'},
+    {'1': 'bytesValue', '3': 9, '4': 1, '5': 12, '9': 0, '10': 'bytesValue'},
+    {'1': 'listStringValue', '3': 10, '4': 1, '5': 11, '6': '.ListString', '9': 0, '10': 'listStringValue'},
+    {'1': 'listInt32Value', '3': 11, '4': 1, '5': 11, '6': '.ListInt32', '9': 0, '10': 'listInt32Value'},
+    {'1': 'listInt64Value', '3': 12, '4': 1, '5': 11, '6': '.ListInt64', '9': 0, '10': 'listInt64Value'},
+    {'1': 'listuInt32Value', '3': 13, '4': 1, '5': 11, '6': '.ListuInt32', '9': 0, '10': 'listuInt32Value'},
+    {'1': 'listuInt64Value', '3': 14, '4': 1, '5': 11, '6': '.ListuInt64', '9': 0, '10': 'listuInt64Value'},
+    {'1': 'listFloatValue', '3': 15, '4': 1, '5': 11, '6': '.ListFloat', '9': 0, '10': 'listFloatValue'},
+    {'1': 'listDoubleValue', '3': 16, '4': 1, '5': 11, '6': '.ListDouble', '9': 0, '10': 'listDoubleValue'},
+    {'1': 'listBoolValue', '3': 17, '4': 1, '5': 11, '6': '.ListBool', '9': 0, '10': 'listBoolValue'},
+    {'1': 'listBytesValue', '3': 18, '4': 1, '5': 11, '6': '.ListBytes', '9': 0, '10': 'listBytesValue'},
   ],
   '8': [
     {'1': 'kind'},
@@ -64,18 +68,21 @@ const Value$json = {
 
 /// Descriptor for `Value`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List valueDescriptor = $convert.base64Decode(
-    'CgVWYWx1ZRIiCgtzdHJpbmdWYWx1ZRgBIAEoCUgAUgtzdHJpbmdWYWx1ZRIgCgppbnQzMlZhbH'
-    'VlGAIgASgFSABSCmludDMyVmFsdWUSIAoKaW50NjRWYWx1ZRgDIAEoA0gAUgppbnQ2NFZhbHVl'
-    'EiAKCmZsb2F0VmFsdWUYBCABKAJIAFIKZmxvYXRWYWx1ZRIiCgtkb3VibGVWYWx1ZRgFIAEoAU'
-    'gAUgtkb3VibGVWYWx1ZRIeCglib29sVmFsdWUYBiABKAhIAFIJYm9vbFZhbHVlEiAKCmJ5dGVz'
-    'VmFsdWUYByABKAxIAFIKYnl0ZXNWYWx1ZRI3Cg9saXN0U3RyaW5nVmFsdWUYCCABKAsyCy5MaX'
-    'N0U3RyaW5nSABSD2xpc3RTdHJpbmdWYWx1ZRI0Cg5saXN0SW50MzJWYWx1ZRgJIAEoCzIKLkxp'
-    'c3RJbnQzMkgAUg5saXN0SW50MzJWYWx1ZRI0Cg5saXN0SW50NjRWYWx1ZRgKIAEoCzIKLkxpc3'
-    'RJbnQ2NEgAUg5saXN0SW50NjRWYWx1ZRI0Cg5saXN0RmxvYXRWYWx1ZRgLIAEoCzIKLkxpc3RG'
-    'bG9hdEgAUg5saXN0RmxvYXRWYWx1ZRI3Cg9saXN0RG91YmxlVmFsdWUYDCABKAsyCy5MaXN0RG'
-    '91YmxlSABSD2xpc3REb3VibGVWYWx1ZRIxCg1saXN0Qm9vbFZhbHVlGA0gASgLMgkuTGlzdEJv'
-    'b2xIAFINbGlzdEJvb2xWYWx1ZRI0Cg5saXN0Qnl0ZXNWYWx1ZRgOIAEoCzIKLkxpc3RCeXRlc0'
-    'gAUg5saXN0Qnl0ZXNWYWx1ZUIGCgRraW5k');
+    'CgVWYWx1ZRIiCgtzdHJpbmdWYWx1ZRgBIAEoCUgAUgtzdHJpbmdWYWx1ZRIiCgt1aW50MzJWYW'
+    'x1ZRgCIAEoDUgAUgt1aW50MzJWYWx1ZRIiCgt1aW50NjRWYWx1ZRgDIAEoBEgAUgt1aW50NjRW'
+    'YWx1ZRIgCgppbnQzMlZhbHVlGAQgASgFSABSCmludDMyVmFsdWUSIAoKaW50NjRWYWx1ZRgFIA'
+    'EoA0gAUgppbnQ2NFZhbHVlEiAKCmZsb2F0VmFsdWUYBiABKAJIAFIKZmxvYXRWYWx1ZRIiCgtk'
+    'b3VibGVWYWx1ZRgHIAEoAUgAUgtkb3VibGVWYWx1ZRIeCglib29sVmFsdWUYCCABKAhIAFIJYm'
+    '9vbFZhbHVlEiAKCmJ5dGVzVmFsdWUYCSABKAxIAFIKYnl0ZXNWYWx1ZRI3Cg9saXN0U3RyaW5n'
+    'VmFsdWUYCiABKAsyCy5MaXN0U3RyaW5nSABSD2xpc3RTdHJpbmdWYWx1ZRI0Cg5saXN0SW50Mz'
+    'JWYWx1ZRgLIAEoCzIKLkxpc3RJbnQzMkgAUg5saXN0SW50MzJWYWx1ZRI0Cg5saXN0SW50NjRW'
+    'YWx1ZRgMIAEoCzIKLkxpc3RJbnQ2NEgAUg5saXN0SW50NjRWYWx1ZRI3Cg9saXN0dUludDMyVm'
+    'FsdWUYDSABKAsyCy5MaXN0dUludDMySABSD2xpc3R1SW50MzJWYWx1ZRI3Cg9saXN0dUludDY0'
+    'VmFsdWUYDiABKAsyCy5MaXN0dUludDY0SABSD2xpc3R1SW50NjRWYWx1ZRI0Cg5saXN0RmxvYX'
+    'RWYWx1ZRgPIAEoCzIKLkxpc3RGbG9hdEgAUg5saXN0RmxvYXRWYWx1ZRI3Cg9saXN0RG91Ymxl'
+    'VmFsdWUYECABKAsyCy5MaXN0RG91YmxlSABSD2xpc3REb3VibGVWYWx1ZRIxCg1saXN0Qm9vbF'
+    'ZhbHVlGBEgASgLMgkuTGlzdEJvb2xIAFINbGlzdEJvb2xWYWx1ZRI0Cg5saXN0Qnl0ZXNWYWx1'
+    'ZRgSIAEoCzIKLkxpc3RCeXRlc0gAUg5saXN0Qnl0ZXNWYWx1ZUIGCgRraW5k');
 
 @$core.Deprecated('Use listStringDescriptor instead')
 const ListString$json = {
@@ -112,6 +119,30 @@ const ListInt64$json = {
 /// Descriptor for `ListInt64`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listInt64Descriptor = $convert.base64Decode(
     'CglMaXN0SW50NjQSFgoGdmFsdWVzGAEgAygDUgZ2YWx1ZXM=');
+
+@$core.Deprecated('Use listuInt32Descriptor instead')
+const ListuInt32$json = {
+  '1': 'ListuInt32',
+  '2': [
+    {'1': 'values', '3': 1, '4': 3, '5': 13, '10': 'values'},
+  ],
+};
+
+/// Descriptor for `ListuInt32`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listuInt32Descriptor = $convert.base64Decode(
+    'CgpMaXN0dUludDMyEhYKBnZhbHVlcxgBIAMoDVIGdmFsdWVz');
+
+@$core.Deprecated('Use listuInt64Descriptor instead')
+const ListuInt64$json = {
+  '1': 'ListuInt64',
+  '2': [
+    {'1': 'values', '3': 1, '4': 3, '5': 4, '10': 'values'},
+  ],
+};
+
+/// Descriptor for `ListuInt64`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listuInt64Descriptor = $convert.base64Decode(
+    'CgpMaXN0dUludDY0EhYKBnZhbHVlcxgBIAMoBFIGdmFsdWVz');
 
 @$core.Deprecated('Use listFloatDescriptor instead')
 const ListFloat$json = {
