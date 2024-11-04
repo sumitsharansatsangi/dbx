@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:archive/archive_io.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
@@ -63,10 +64,10 @@ class DBX {
 
   static Future<void> _decryptFile() async {
     try {
-      final bytes = await _file.readAsBytes();
+      final bytes = Inflate( await _file.readAsBytes()).getBytes();
       if (bytes.isNotEmpty) {
         final decrypted =
-            _encrypter.decryptBytes(encrypt.Encrypted(bytes), iv: _iv);
+            _encrypter.decryptBytes(encrypt.Encrypted( Uint8List.fromList(bytes)), iv: _iv);
         _keyValue = KeyValue.fromBuffer(decrypted);
       }
     } catch (e) {
@@ -486,7 +487,7 @@ class DBX {
       final originalBytes = _keyValue.writeToBuffer();
       if (originalBytes.isNotEmpty) {
         _file.writeAsBytes(
-            _encrypter.encryptBytes(originalBytes, iv: _iv).bytes,
+          Deflate( _encrypter.encryptBytes(originalBytes, iv: _iv).bytes).getBytes(),
             flush: true);
       }
     });
