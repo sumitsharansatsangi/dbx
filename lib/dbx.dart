@@ -64,10 +64,11 @@ class DBX {
 
   static Future<void> _decryptFile() async {
     try {
-      final bytes = Inflate( await _file.readAsBytes()).getBytes();
+      final bytes = Inflate(await _file.readAsBytes()).getBytes();
       if (bytes.isNotEmpty) {
-        final decrypted =
-            _encrypter.decryptBytes(encrypt.Encrypted( Uint8List.fromList(bytes)), iv: _iv);
+        final decrypted = _encrypter.decryptBytes(
+            encrypt.Encrypted(Uint8List.fromList(bytes)),
+            iv: _iv);
         _keyValue = KeyValue.fromBuffer(decrypted);
       }
     } catch (e) {
@@ -115,7 +116,7 @@ class DBX {
     _flush();
   }
 
-   static int? getPositiveInt(String key) {
+  static int? getPositiveInt(String key) {
     return dataMap[key]?.uint32Value;
   }
 
@@ -134,7 +135,6 @@ class DBX {
     }
     _flush();
   }
-
 
   static int? getLong(String key) {
     return dataMap[key]?.int64Value.toInt();
@@ -156,7 +156,7 @@ class DBX {
     _flush();
   }
 
-   static int? getPositiveLong(String key) {
+  static int? getPositiveLong(String key) {
     return dataMap[key]?.uint64Value.toInt();
   }
 
@@ -175,7 +175,6 @@ class DBX {
     }
     _flush();
   }
-
 
   static double? getFloat(String key) {
     return dataMap[key]?.floatValue;
@@ -265,30 +264,34 @@ class DBX {
     _flush();
   }
 
-   static List<String>? getStringList(String key) {
+  static List<String>? getStringList(String key) {
     return dataMap[key]?.listStringValue.values;
   }
 
   static Map<String, List<String>> getStringListBulk(List<String> keys) {
     return {
       for (var key in keys)
-        if (dataMap[key] != null && dataMap[key]?.listStringValue.values != null)
+        if (dataMap[key] != null &&
+            dataMap[key]?.listStringValue.values != null)
           key: dataMap[key]!.listStringValue.values
     };
   }
 
   static void setStringList(String key, List<String> value) {
-    dataMap[key] = Value()..listStringValue = (ListString()..values.addAll(value));
+    dataMap[key] = Value()
+      ..listStringValue = (ListString()..values.addAll(value));
     _flush();
   }
 
   static void setStringListBulk(Map<String, List<String>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listStringValue = (ListString()..values.addAll(entry.value));
+      dataMap[entry.key] = Value()
+        ..listStringValue = (ListString()..values.addAll(entry.value));
     }
     _flush();
   }
-   static List<int>? getIntList(String key) {
+
+  static List<int>? getIntList(String key) {
     return dataMap[key]?.listInt32Value.values;
   }
 
@@ -301,13 +304,15 @@ class DBX {
   }
 
   static void setIntList(String key, List<int> value) {
-    dataMap[key] = Value()..listInt32Value = (ListInt32()..values.addAll(value));
+    dataMap[key] = Value()
+      ..listInt32Value = (ListInt32()..values.addAll(value));
     _flush();
   }
 
   static void setIntListBulk(Map<String, List<int>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listInt32Value = (ListInt32()..values.addAll(entry.value));
+      dataMap[entry.key] = Value()
+        ..listInt32Value = (ListInt32()..values.addAll(entry.value));
     }
     _flush();
   }
@@ -319,108 +324,123 @@ class DBX {
   static Map<String, List<int>> getPositiveIntListBulk(List<String> keys) {
     return {
       for (var key in keys)
-        if (dataMap[key] != null && dataMap[key]?.listuInt32Value.values != null)
+        if (dataMap[key] != null &&
+            dataMap[key]?.listuInt32Value.values != null)
           key: dataMap[key]!.listuInt32Value.values
     };
   }
 
   static void setPositiveIntList(String key, List<int> value) {
-    dataMap[key] = Value()..listuInt32Value = (ListuInt32()..values.addAll(value));
+    dataMap[key] = Value()
+      ..listuInt32Value = (ListuInt32()..values.addAll(value));
     _flush();
   }
 
   static void setPositiveIntListBulk(Map<String, List<int>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listuInt32Value = (ListuInt32()..values.addAll(entry.value));
+      dataMap[entry.key] = Value()
+        ..listuInt32Value = (ListuInt32()..values.addAll(entry.value));
     }
     _flush();
   }
 
   static List<int>? getLongList(String key) {
     final longList = dataMap[key]?.listInt64Value.values;
-    if(longList == null)return null;
-    return [for(var long in longList) long.toInt() ];
+    if (longList == null) return null;
+    return [for (var long in longList) long.toInt()];
   }
 
   static Map<String, List<int>> getLongListBulk(List<String> keys) {
     return {
       for (var key in keys)
         if (dataMap[key] != null)
-          key: [for(var long in  dataMap[key]!.listInt64Value.values) long.toInt() ]
+          key: [
+            for (var long in dataMap[key]!.listInt64Value.values) long.toInt()
+          ]
     };
   }
 
   static void setLongList(String key, List<int> value) {
-    dataMap[key] = Value()..listInt64Value = (ListInt64()..values.addAll([ for(var v in value) Int64(v)]));
+    dataMap[key] = Value()
+      ..listInt64Value =
+          (ListInt64()..values.addAll([for (var v in value) Int64(v)]));
     _flush();
   }
 
   static void setLongListBulk(Map<String, List<int>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listInt64Value = (ListInt64()..values.addAll([ for(var v in entry.value) Int64(v)]));
+      dataMap[entry.key] = Value()
+        ..listInt64Value =
+            (ListInt64()..values.addAll([for (var v in entry.value) Int64(v)]));
     }
     _flush();
   }
 
   static List<int>? getPositiveLongList(String key) {
     final longList = dataMap[key]?.listuInt64Value.values;
-    if(longList == null)return null;
-    return [for(var long in longList) long.toInt() ];
+    if (longList == null) return null;
+    return [for (var long in longList) long.toInt()];
   }
 
   static Map<String, List<int>> getPositiveLongListBulk(List<String> keys) {
     return {
       for (var key in keys)
         if (dataMap[key] != null)
-          key: [for(var long in  dataMap[key]!.listuInt64Value.values) long.toInt() ]
+          key: [
+            for (var long in dataMap[key]!.listuInt64Value.values) long.toInt()
+          ]
     };
   }
 
   static void setPositiveLongList(String key, List<int> value) {
-    dataMap[key] = Value()..listuInt64Value = (ListuInt64()..values.addAll([ for(var v in value) Int64(v)]));
+    dataMap[key] = Value()
+      ..listuInt64Value =
+          (ListuInt64()..values.addAll([for (var v in value) Int64(v)]));
     _flush();
   }
 
   static void setPositiveLongListBulk(Map<String, List<int>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listuInt64Value = (ListuInt64()..values.addAll([ for(var v in entry.value) Int64(v)]));
+      dataMap[entry.key] = Value()
+        ..listuInt64Value = (ListuInt64()
+          ..values.addAll([for (var v in entry.value) Int64(v)]));
     }
     _flush();
   }
 
-    static List<double>? getDoubleList(String key) {
-      return dataMap[key]?.listFloatValue.values;
+  static List<double>? getDoubleList(String key) {
+    return dataMap[key]?.listFloatValue.values;
   }
 
   static Map<String, List<double>> getDoubleListBulk(List<String> keys) {
     return {
       for (var key in keys)
-        if (dataMap[key] != null)
-          key:  dataMap[key]!.listDoubleValue.values
+        if (dataMap[key] != null) key: dataMap[key]!.listDoubleValue.values
     };
   }
 
   static void setDoubleList(String key, List<double> value) {
-    dataMap[key] = Value()..listDoubleValue = (ListDouble()..values.addAll(value));
+    dataMap[key] = Value()
+      ..listDoubleValue = (ListDouble()..values.addAll(value));
     _flush();
   }
 
   static void setDoubleListBulk(Map<String, List<double>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listDoubleValue = (ListDouble()..values.addAll(entry.value));
+      dataMap[entry.key] = Value()
+        ..listDoubleValue = (ListDouble()..values.addAll(entry.value));
     }
     _flush();
   }
 
-     static List<bool>? getBoolList(String key) { 
-      return dataMap[key]?.listBoolValue.values;
+  static List<bool>? getBoolList(String key) {
+    return dataMap[key]?.listBoolValue.values;
   }
 
   static Map<String, List<bool>> getBoolListBulk(List<String> keys) {
     return {
       for (var key in keys)
-        if (dataMap[key] != null)
-          key:  dataMap[key]!.listBoolValue.values
+        if (dataMap[key] != null) key: dataMap[key]!.listBoolValue.values
     };
   }
 
@@ -431,40 +451,45 @@ class DBX {
 
   static void setBoolListBulk(Map<String, List<bool>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listBoolValue = (ListBool()..values.addAll(entry.value));
+      dataMap[entry.key] = Value()
+        ..listBoolValue = (ListBool()..values.addAll(entry.value));
     }
     _flush();
   }
 
-    static List<Uint8List>? getBytesList(String key) {
-      final data = dataMap[key];
-    if(data != null){
-      final values =   data.listBytesValue.values;
-       return [for (var value in values)  Uint8List.fromList(value) ];
+  static List<Uint8List>? getBytesList(String key) {
+    final data = dataMap[key];
+    if (data != null) {
+      final values = data.listBytesValue.values;
+      return [for (var value in values) Uint8List.fromList(value)];
     }
-      return [];
+    return [];
   }
 
   static Map<String, List<Uint8List>> getBytesListBulk(List<String> keys) {
     return {
       for (var key in keys)
         if (dataMap[key] != null)
-          key:   [for (var value in dataMap[key]!.listBytesValue.values)  Uint8List.fromList(value) ]
+          key: [
+            for (var value in dataMap[key]!.listBytesValue.values)
+              Uint8List.fromList(value)
+          ]
     };
   }
 
   static void setBytesList(String key, List<Uint8List> value) {
-    dataMap[key] = Value()..listBytesValue = (ListBytes()..values.addAll(value));
+    dataMap[key] = Value()
+      ..listBytesValue = (ListBytes()..values.addAll(value));
     _flush();
   }
 
   static void setBytesListBulk(Map<String, List<Uint8List>> map) {
     for (var entry in map.entries) {
-      dataMap[entry.key] = Value()..listBytesValue = (ListBytes()..values.addAll(entry.value));
+      dataMap[entry.key] = Value()
+        ..listBytesValue = (ListBytes()..values.addAll(entry.value));
     }
     _flush();
   }
-
 
   static void remove(String key) {
     if (dataMap.keys.contains(key)) {
@@ -487,7 +512,8 @@ class DBX {
       final originalBytes = _keyValue.writeToBuffer();
       if (originalBytes.isNotEmpty) {
         _file.writeAsBytes(
-          Deflate( _encrypter.encryptBytes(originalBytes, iv: _iv).bytes).getBytes(),
+            Deflate(_encrypter.encryptBytes(originalBytes, iv: _iv).bytes)
+                .getBytes(),
             flush: true);
       }
     });
